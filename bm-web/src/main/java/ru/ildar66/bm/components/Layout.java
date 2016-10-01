@@ -8,7 +8,6 @@ import org.apache.tapestry5.SymbolConstants;
 
 /**
  * Layout component for pages of application bm-web.
- * temp Layout class commit
  */
 @Import(stylesheet = "context:layout/layout.css")
 public class Layout
