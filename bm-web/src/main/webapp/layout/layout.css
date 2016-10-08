@@ -212,6 +212,20 @@ div.content {
     background: url(images/img04.jpg) no-repeat left center;
 }
 
+/* Left Sidebar */
+
+div.leftSidebar {
+    float: left;
+    width: 300px;
+    margin-top: 30px;
+}
+
+div.leftSidebar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
 /* Sidebar */
 
 div.sidebar {
