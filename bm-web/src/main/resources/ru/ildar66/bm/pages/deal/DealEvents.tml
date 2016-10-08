@@ -35,6 +35,14 @@
                             </tr>
                         </table>
                     </td> -->
+                    
+                    <td style="vertical-align: top;">
+                        <table>
+                            <tr>
+                            	<td><input t:type="Checklist" t:id="checklist" t:model="filter.STATUSES" t:selected="filter.selectedStatuses" t:encoder="stringValueEncoder"/></td>
+                            </tr>
+                        </table>
+                    </td>
                	</tr>
             </table>
     	</form>
