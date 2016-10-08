@@ -1,0 +1,43 @@
+<html t:type="layout" title="List events by Deal"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+
+    <fieldset>
+    	<legend>Filter</legend>
+    	<form t:type="form" t:id="searchEventsForm" t:clientValidation="none" t:autofocus="false">
+    		<table style="width: 100%">
+                <tr>
+               		<td t:type="zone" t:id="searchPeriodZone" id="searchPeriodZone" t:clientValidation="none" t:autofocus="false"  t:update="show" style="vertical-align: top;">
+                        <table>
+                        	<tr><td colspan="2">Date deal:</td></tr>
+                            <tr>
+                                <td>Period from&nbsp;</td>
+                                <td>
+                                    <t:datefield t:value="filter.dateFrom"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Period to&nbsp;</td>
+                                <td>
+                                    <t:datefield t:value="filter.dateTo"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    
+                   <!--  <td style="vertical-align: top;">
+                        <table>
+                            <tr t:type="loop" t:source="statuses" t:value="status" t:formState="iteration">
+                                <td>
+                                    <input t:type="checkbox" t:id="statusCheckbox" t:value="statusSelected"/>
+                                    <span t:type="label" t:for="statusCheckbox">${status.name}</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td> -->
+               	</tr>
+            </table>
+    	</form>
+    </fieldset>
+
+</html>
