@@ -3,6 +3,8 @@ package ru.ildar66.bm.common.searchfilter;
 import java.util.Date;
 import java.util.List;
 
+import ru.ildar66.bm.common.instance.DealInstance;
+
 /**
  * Filter for list events for deal
  * 
@@ -38,6 +40,11 @@ public class EventsByDealFilter {
 
 	public void setSelectedStatuses(List<String> selectedStatuses) {
 		this.selectedStatuses = selectedStatuses;
+	}
+
+	public boolean match(DealInstance inst) {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }
