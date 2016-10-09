@@ -3,7 +3,6 @@ package ru.ildar66.bm.pages.deal;
 import java.util.List;
 
 import org.apache.tapestry5.EventConstants;
-import org.apache.tapestry5.PersistenceConstants;
 import org.apache.tapestry5.SelectModel;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
@@ -51,6 +50,11 @@ public class DealEvents {
 	@OnEvent(value = EventConstants.SUCCESS, component = "searchEventsForm")
 	void performSearch() {
 		// TODO: complete search, no need in this listener?
+	}
+	
+	@OnEvent(value = EventConstants.SELECTED, component = "clearFilterButtonForDeal")
+	void clearFilter() {
+		filter = emptyFilter();
 	}
 
 	private EventsByDealFilter emptyFilter() {

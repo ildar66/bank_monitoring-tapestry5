@@ -1,6 +1,7 @@
 package ru.ildar66.bm.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ru.ildar66.bm.common.entity.Contractor;
@@ -24,12 +25,16 @@ public class DealDaoMockImpl implements DealDao {
 	}
 
 	private void initMockData() {
-		addInstance(new DealEvent(new Deal("contractNumber", 1000L, Currency.EUR, DealType.CREDIT), new Contractor(
-				"contractorName_1")));
-		addInstance(new DealEvent(new Deal("contractNumber", 2000L, Currency.RUR, DealType.ACCREDITIVE),
-				new Contractor("contractorName_2")));
-		addInstance(new DealEvent(new Deal("contractNumber", 3000L, Currency.USD, DealType.CREDIT), new Contractor(
-				"contractorName_3")));
+		DealEvent event1 = new DealEvent(new Deal("contractNumber", 1000L, Currency.EUR, DealType.CREDIT, new Date()),
+				new Contractor("contractorName_1"));
+		event1.setStatus("ALL CRF");
+		addInstance(event1);
+		DealEvent event2 = new DealEvent(new Deal("contractNumber", 2000L, Currency.RUR, DealType.ACCREDITIVE, new Date()),
+				new Contractor("contractorName_2"));
+		event2.setStatus("Overdue KE");
+		addInstance(event2);
+		addInstance(new DealEvent(new Deal("contractNumber", 3000L, Currency.USD, DealType.CREDIT, new Date()),
+				new Contractor("contractorName_3")));
 	}
 
 	public List<DealEvent> getDealEvents(int startIndex, int amount, EventsByDealFilter filter) {

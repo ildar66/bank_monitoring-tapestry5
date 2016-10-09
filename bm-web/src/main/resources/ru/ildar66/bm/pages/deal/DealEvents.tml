@@ -13,13 +13,13 @@
                             <tr>
                                 <td>Period from&nbsp;</td>
                                 <td nowrap="nowrap">
-                                    <t:datefield t:value="filter.dateFrom"/>
+                                    <t:datefield t:value="filter.dateFrom" t:format="dd.MM.yyyy"/>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Period to&nbsp;</td>
                                 <td>
-                                    <t:datefield t:value="filter.dateTo"/>
+                                    <t:datefield t:value="filter.dateTo" t:format="dd.MM.yyyy"/>
                                 </td>
                             </tr>
                         </table>
@@ -56,28 +56,32 @@
 				</tr>
             </table>
 	    	<div class="buttons">
-	            <input t:type="submit" t:value="find" class="button"/>                
+	            <input t:type="submit" t:value="Search" class="button"/>&nbsp;
+	            <input t:type="submit" t:value="Clear" class="button" t:mode="cancel" t:id="clearFilterButtonForDeal"/>                
 	        </div>
     	</form>
     </fieldset>
     
     <table t:type="grid" t:source="dealEvents" t:row="dealEvent" t:pagerPosition="bottom" 
-    	t:add="contractNumber, contractorName, amount, currency, dealType" style="width: 100%;">
+    	t:add="contractNumber, contractorName, amount, currency, dealType, dealDate" style="width: 100%;">
      	<p:contractNumberCell>
-            ${dealEvent?.deal?.contractNumber}
+            ${dealEvent.deal?.contractNumber}
         </p:contractNumberCell>
         <p:contractorNameCell>
-            ${dealEvent?.contractor?.name}
+            ${dealEvent.contractor?.name}
         </p:contractorNameCell>
      	<p:amountCell>
-            ${dealEvent?.deal?.amount}
+            ${dealEvent.deal?.amount}
         </p:amountCell>
         <p:currencyCell>
-            ${dealEvent?.deal?.currency}
+            ${dealEvent.deal?.currency}
         </p:currencyCell>
         <p:dealTypeCell>
-            ${dealEvent?.deal?.type?.name}
-        </p:dealTypeCell>        
+            ${dealEvent.deal?.type?.name}
+        </p:dealTypeCell>
+        <p:dealDateCell>
+            <span t:type="output" t:format="literal:dd.MM.yyyy" t:value="dealEvent.deal?.date"></span>
+        </p:dealDateCell>        
         
         <p:empty>
             <h2>Deals not found</h2>

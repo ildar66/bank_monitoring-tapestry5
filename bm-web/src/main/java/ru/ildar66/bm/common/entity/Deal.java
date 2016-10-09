@@ -1,5 +1,7 @@
 package ru.ildar66.bm.common.entity;
 
+import java.util.Date;
+
 /**
  * Deal entity.
  * 
@@ -7,18 +9,27 @@ package ru.ildar66.bm.common.entity;
  * 
  */
 public class Deal {
-
+	private Date date;
 	private Long amount;
 	private Currency currency;
 	private DealType type;
 	private String contractNumber;
 
-	public Deal(String contractNumber, Long amount, Currency currency, DealType type) {
+	public Deal(String contractNumber, Long amount, Currency currency, DealType type, Date date) {
 		super();
 		this.contractNumber = contractNumber;
 		this.amount = amount;
 		this.currency = currency;
 		this.type = type;
+		this.date = date;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public Long getAmount() {

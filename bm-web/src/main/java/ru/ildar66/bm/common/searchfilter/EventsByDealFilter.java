@@ -71,32 +71,30 @@ public class EventsByDealFilter {
 		this.selectedStatuses = selectedStatuses;
 	}
 
-	public boolean match(DealEvent inst) {
-		// TODO Auto-generated method stub
-		// if (!filter.getStatuses().contains(inst.getStatus())) {
-		// return false;
-		// }
-		// if (filter.getDateFrom() != null && filter.getDateFrom().after(inst.getPlanExecutionDate())) {
-		// return false;
-		// }
-		// if (filter.getDateTo() != null) {
-		// Calendar calendar = Calendar.getInstance();
-		// calendar.setTime(filter.getDateTo());
-		// calendar.add(Calendar.DATE, 1);
-		// if (!calendar.getTime().after(inst.getPlanExecutionDate())) {
-		// return false;
-		// }
-		// }
-		if (getCurrency() != null && getCurrency() != inst.getDeal().getCurrency()) {
+	public boolean match(DealEvent event) {
+		if (getSelectedStatuses() != null && getSelectedStatuses().size() > 0
+				&& !getSelectedStatuses().contains(event.getStatus())) {
 			return false;
 		}
-		if (getAmountFrom() != null && getAmountFrom() > inst.getDeal().getAmount()) {
+		if (getDateFrom() != null && getDateFrom().after(event.getDeal().getDate())) {
 			return false;
 		}
-		if (getAmountTo() != null && getAmountTo() < inst.getDeal().getAmount()) {
+		if (getDateTo() != null) {
+			Date dateTo = new Date(getDateTo().getTime() + 24 * 60 * 60 * 1000);
+			if (dateTo.before(event.getDeal().getDate())) {
+				return false;
+			}
+		}
+
+		if (getCurrency() != null && getCurrency() != event.getDeal().getCurrency()) {
+			return false;
+		}
+		if (getAmountFrom() != null && getAmountFrom() > event.getDeal().getAmount()) {
+			return false;
+		}
+		if (getAmountTo() != null && getAmountTo() < event.getDeal().getAmount()) {
 			return false;
 		}
 		return true;
 	}
-
 }
