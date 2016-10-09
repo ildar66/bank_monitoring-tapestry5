@@ -15,7 +15,7 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.util.EnumSelectModel;
 
 import ru.ildar66.bm.common.entity.Currency;
-import ru.ildar66.bm.common.instance.DealInstance;
+import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
 import ru.ildar66.bm.dao.DealDao;
 
@@ -39,7 +39,7 @@ public class DealEvents {
 	@Property
 	private final StringValueEncoder stringValueEncoder = new StringValueEncoder();
 	@Property
-	private DealInstance dealInstance;
+	private DealEvent dealEvent;
 
 	@OnEvent(value = EventConstants.ACTIVATE)
 	void prepare() {
@@ -58,9 +58,9 @@ public class DealEvents {
 		return filter;
 	}
 
-	public List<DealInstance> getDealInstances() {
+	public List<DealEvent> getDealEvents() {
 		int amount = 10;
-		return dealDao.getInstances(0, amount, filter);
+		return dealDao.getDealEvents(0, amount, filter);
 	}
 
 	public SelectModel getCurrencies() {

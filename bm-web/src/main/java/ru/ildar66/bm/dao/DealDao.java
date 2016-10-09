@@ -2,7 +2,7 @@ package ru.ildar66.bm.dao;
 
 import java.util.List;
 
-import ru.ildar66.bm.common.instance.DealInstance;
+import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
 
 /**
@@ -13,5 +13,5 @@ import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
  */
 public interface DealDao {
 
-	List<DealInstance> getInstances(int startIndex, int amount, EventsByDealFilter filter);
+	List<DealEvent> getDealEvents(int startIndex, int amount, EventsByDealFilter filter);
 }

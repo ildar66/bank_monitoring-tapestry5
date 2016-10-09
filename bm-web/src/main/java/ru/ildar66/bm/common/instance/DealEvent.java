@@ -4,16 +4,16 @@ import ru.ildar66.bm.common.entity.Contractor;
 import ru.ildar66.bm.common.entity.Deal;
 
 /**
- * Instance for list of Deals.
+ * event for Deals.
  * 
  * @author Shafigullin Ildar
  * 
  */
-public class DealInstance {
+public class DealEvent {
 	private Deal deal;
 	private Contractor contractor;
 
-	public DealInstance(Deal deal, Contractor contractor) {
+	public DealEvent(Deal deal, Contractor contractor) {
 		super();
 		this.deal = deal;
 		this.contractor = contractor;

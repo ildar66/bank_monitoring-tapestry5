@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import ru.ildar66.bm.common.entity.Currency;
-import ru.ildar66.bm.common.instance.DealInstance;
+import ru.ildar66.bm.common.instance.DealEvent;
 
 /**
  * Filter for list events for deal
@@ -71,7 +71,7 @@ public class EventsByDealFilter {
 		this.selectedStatuses = selectedStatuses;
 	}
 
-	public boolean match(DealInstance inst) {
+	public boolean match(DealEvent inst) {
 		// TODO Auto-generated method stub
 		// if (!filter.getStatuses().contains(inst.getStatus())) {
 		// return false;

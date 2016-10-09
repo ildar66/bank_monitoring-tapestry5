@@ -61,22 +61,22 @@
     	</form>
     </fieldset>
     
-    <table t:type="grid" t:source="dealInstances" t:row="dealInstance" t:pagerPosition="bottom" 
+    <table t:type="grid" t:source="dealEvents" t:row="dealEvent" t:pagerPosition="bottom" 
     	t:add="contractNumber, contractorName, amount, currency, dealType" style="width: 100%;">
      	<p:contractNumberCell>
-            ${dealInstance?.deal?.contractNumber}
+            ${dealEvent?.deal?.contractNumber}
         </p:contractNumberCell>
         <p:contractorNameCell>
-            ${dealInstance?.contractor?.name}
+            ${dealEvent?.contractor?.name}
         </p:contractorNameCell>
      	<p:amountCell>
-            ${dealInstance?.deal?.amount}
+            ${dealEvent?.deal?.amount}
         </p:amountCell>
         <p:currencyCell>
-            ${dealInstance?.deal?.currency}
+            ${dealEvent?.deal?.currency}
         </p:currencyCell>
         <p:dealTypeCell>
-            ${dealInstance?.deal?.type?.name}
+            ${dealEvent?.deal?.type?.name}
         </p:dealTypeCell>        
         
         <p:empty>
