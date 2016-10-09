@@ -12,7 +12,7 @@
                         	<tr><td colspan="2">Date deal:</td></tr>
                             <tr>
                                 <td>Period from&nbsp;</td>
-                                <td>
+                                <td nowrap="nowrap">
                                     <t:datefield t:value="filter.dateFrom"/>
                                 </td>
                             </tr>
@@ -25,26 +25,39 @@
                         </table>
                     </td>
                     
-                   <!--  <td style="vertical-align: top;">
-                        <table>
-                            <tr t:type="loop" t:source="statuses" t:value="status" t:formState="iteration">
-                                <td>
-                                    <input t:type="checkbox" t:id="statusCheckbox" t:value="statusSelected"/>
-                                    <span t:type="label" t:for="statusCheckbox">${status.name}</span>
-                                </td>
-                            </tr>
-                        </table>
-                    </td> -->
-                    
                     <td style="vertical-align: top;">
                         <table>
                             <tr>
-                            	<td><input t:type="Checklist" t:id="checklist" t:model="filter.STATUSES" t:selected="filter.selectedStatuses" t:encoder="stringValueEncoder"/></td>
+                            	<td nowrap="nowrap">
+                            		<input t:type="Checklist" t:id="checklist" t:model="filter.STATUSES" t:selected="filter.selectedStatuses" t:encoder="stringValueEncoder"/>
+                            	</td>
                             </tr>
                         </table>
                     </td>
-               	</tr>
+
+					<td style="vertical-align: top;">
+						<table>
+							<tr>
+								<td style="text-align: right;">
+									<span t:type="label" t:for="amountFromInput">Summ from</span>&nbsp;
+								</td>
+								<td nowrap="nowrap">
+									<input t:type="textField" t:id="amountFromInput" t:value="filter.amountFrom" style="width: 80px" />&nbsp;
+										<span t:type="label" t:for="amountToInput">to</span>&nbsp;
+									<input t:type="textField" t:id="amountToInput" t:value="filter.amountTo" style="width: 80px" />
+								</td>
+								<td style="text-align: left;" colspan="2" nowrap="nowrap">
+                                    <span t:type="label" t:for="currencySelect">Currency</span>&nbsp;
+                                    <input t:type="select" t:id="currencySelect" t:model="currencies" t:value="filter.currency"/>
+                                </td>
+							</tr>
+						</table>
+					</td>
+				</tr>
             </table>
+	    	<div class="buttons">
+	            <input t:type="submit" t:value="find" class="button"/>                
+	        </div>
     	</form>
     </fieldset>
     
