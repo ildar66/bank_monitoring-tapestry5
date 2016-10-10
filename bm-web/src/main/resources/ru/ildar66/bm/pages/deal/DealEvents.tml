@@ -5,6 +5,7 @@
     <fieldset>
     	<legend>Filter</legend>
     	<form t:type="form" t:id="searchEventsForm" t:clientValidation="none" t:autofocus="false">
+    		<t:errors/>
     		<table style="width: 100%">
                 <tr>
                		<td t:type="zone" t:id="searchPeriodZone" id="searchPeriodZone" t:clientValidation="none" t:autofocus="false"  t:update="show" style="vertical-align: top;">
