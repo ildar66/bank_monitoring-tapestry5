@@ -8,14 +8,20 @@ import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
 import org.apache.tapestry5.annotations.SessionState;
+import org.apache.tapestry5.beaneditor.BeanModel;
+import org.apache.tapestry5.grid.GridDataSource;
+import org.apache.tapestry5.grid.SortConstraint;
 import org.apache.tapestry5.internal.services.StringValueEncoder;
 import org.apache.tapestry5.ioc.Messages;
 import org.apache.tapestry5.ioc.annotations.Inject;
+import org.apache.tapestry5.services.BeanModelSource;
 import org.apache.tapestry5.util.EnumSelectModel;
 
 import ru.ildar66.bm.common.entity.Currency;
 import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
+import ru.ildar66.bm.common.util.SortCriterion;
+import ru.ildar66.bm.common.util.SortUtil;
 import ru.ildar66.bm.dao.DealDao;
 
 /**
@@ -30,6 +36,8 @@ public class DealEvents {
 
 	@Inject
 	private Messages messages;
+	@Inject
+	private BeanModelSource beanModelSource;
 
 	@Persist
 	@Property
@@ -49,9 +57,9 @@ public class DealEvents {
 
 	@OnEvent(value = EventConstants.SUCCESS, component = "searchEventsForm")
 	void performSearch() {
-		// TODO: complete search, no need in this listener?
+		System.out.println("The form was submitted!");
 	}
-	
+
 	@OnEvent(value = EventConstants.SELECTED, component = "clearFilterButtonForDeal")
 	void clearFilter() {
 		filter = emptyFilter();
@@ -62,9 +70,45 @@ public class DealEvents {
 		return filter;
 	}
 
-	public List<DealEvent> getDealEvents() {
-		int amount = 10;
-		return dealDao.getDealEvents(0, amount, filter);
+	/*
+	 * public List<DealEvent> getDealEvents() { int amount = 10; return dealDao.getDealEvents(0, amount, filter); }
+	 */
+
+	public GridDataSource getDealEvents() {
+		return new GridDataSource() {
+			private int startIndex;
+			private List<DealEvent> instances;
+
+			// @Override
+			public int getAvailableRows() {
+				return dealDao.getDealEventCount(filter);
+			}
+
+			// @Override
+			public void prepare(int startIndex, int endIndex, List<SortConstraint> sortConstraints) {
+				this.startIndex = startIndex;
+				List<SortCriterion> sortCriteria = SortUtil.toSortCriteria(sortConstraints);
+				instances = dealDao.getDealEvents(startIndex, endIndex - startIndex + 1, filter, sortCriteria);
+			}
+
+			// @Override
+			public Object getRowValue(int index) {
+				return instances.get(index - startIndex);
+			}
+
+			// @Override
+			public Class<?> getRowType() {
+				return DealEvent.class;
+			}
+		};
+	}
+
+	public BeanModel<DealEvent> getDealEventModel() {
+		BeanModel<DealEvent> eventModel = beanModelSource.createDisplayModel(DealEvent.class, messages);
+		for (String prop : eventModel.getPropertyNames()) {
+			eventModel.get(prop).sortable(true);
+		}
+		return eventModel;
 	}
 
 	public SelectModel getCurrencies() {

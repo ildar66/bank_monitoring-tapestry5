@@ -11,7 +11,8 @@ import ru.ildar66.bm.common.entity.Deal;
  */
 public class DealEvent {
 	private final static String EVENT_STATUS_NEW = "NEW";
-
+	
+	private long id;
 	private Deal deal;
 	private Contractor contractor;
 	private String status = EVENT_STATUS_NEW;
@@ -44,5 +45,13 @@ public class DealEvent {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 }

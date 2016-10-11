@@ -63,8 +63,9 @@
     	</form>
     </fieldset>
     
-    <table t:type="grid" t:source="dealEvents" t:row="dealEvent" t:pagerPosition="bottom" 
-    	t:add="contractNumber, contractorName, amount, currency, dealType, dealDate" style="width: 100%;">
+    <table t:type="grid" t:source="dealEvents" t:model="dealEventModel" t:row="dealEvent" t:rowsPerPage="10" t:pagerPosition="bottom" 
+    	t:include="id, status" t:add="contractNumber, contractorName, amount, currency, dealType, dealDate" style="width: 100%;">
+    	<p:idCell># ${dealEvent.id}</p:idCell>
      	<p:contractNumberCell>
             ${dealEvent.deal?.contractNumber}
         </p:contractNumberCell>

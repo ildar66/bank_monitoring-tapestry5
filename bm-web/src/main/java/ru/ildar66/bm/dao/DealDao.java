@@ -4,6 +4,7 @@ import java.util.List;
 
 import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
+import ru.ildar66.bm.common.util.SortCriterion;
 
 /**
  * DAO for instance Deal
@@ -13,5 +14,8 @@ import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
  */
 public interface DealDao {
 
-	List<DealEvent> getDealEvents(int startIndex, int amount, EventsByDealFilter filter);
+	List<DealEvent> getDealEvents(int startIndex, int amount, EventsByDealFilter filter,
+			List<SortCriterion> sortCriteria);
+
+	int getDealEventCount(EventsByDealFilter filter);
 }
