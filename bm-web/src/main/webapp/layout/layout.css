@@ -226,6 +226,30 @@ div.leftSidebar ul {
     list-style: none;
 }
 
+div.leftSidebar li {
+    margin-bottom: 10px;
+    background: url(images/img10.gif) no-repeat left bottom;
+}
+
+div.leftSidebar li ul {
+    padding: 0 30px 40px 30px;
+}
+
+div.leftSidebar h2 {
+    padding: 30px 30px 5px 10px;
+    background: url(images/img09.gif) no-repeat;
+    text-transform: lowercase;
+    font-weight: normal;
+    font-size: 1.6em;
+    color: #302D26;
+}
+
+div.leftSidebar DIV.leftSidebar-content {
+    width: 265px;
+    margin-left: 10px;
+    padding-bottom: 20px;
+}
+
 /* Sidebar */
 
 div.sidebar {

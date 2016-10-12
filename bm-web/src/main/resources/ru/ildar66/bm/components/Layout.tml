@@ -42,7 +42,12 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
         	<div class="leftSidebar">
 				<ul>
 					<li class="search" style="background: none;"></li>
-					<li><t:pagelink page="deal/events">List events by Deal</t:pagelink></li>
+					<li>
+						<h2></h2>
+						<div class="leftSidebar-content">
+							<t:pagelink page="deal/events">List events by Deal</t:pagelink>
+						</div>
+					</li>
 				</ul>
 			</div>
         	<!-- end leftSidebar -->
