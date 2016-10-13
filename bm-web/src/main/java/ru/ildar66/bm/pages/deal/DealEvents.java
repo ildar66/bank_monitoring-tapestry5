@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.tapestry5.EventConstants;
 import org.apache.tapestry5.SelectModel;
+import org.apache.tapestry5.ValidationTracker;
+import org.apache.tapestry5.annotations.Environmental;
 import org.apache.tapestry5.annotations.OnEvent;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -47,6 +49,9 @@ public class DealEvents {
 	private final StringValueEncoder stringValueEncoder = new StringValueEncoder();
 	@Property
 	private DealEvent dealEvent;
+	
+	@Environmental
+    private ValidationTracker validationTracker;
 
 	@OnEvent(value = EventConstants.ACTIVATE)
 	void prepare() {
@@ -57,11 +62,12 @@ public class DealEvents {
 
 	@OnEvent(value = EventConstants.SUCCESS, component = "searchEventsForm")
 	void performSearch() {
-		System.out.println("The form was submitted!");
+		System.out.println("The form was SUCCESS submitted!");
 	}
 
 	@OnEvent(value = EventConstants.SELECTED, component = "clearFilterButtonForDeal")
 	void clearFilter() {
+		validationTracker.clear();
 		filter = emptyFilter();
 	}
 
