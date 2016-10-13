@@ -40,7 +40,7 @@
 						<table>
 							<tr>
 								<td style="text-align: right;">
-									<span t:type="label" t:for="amountFromInput">Summ from</span>&nbsp;
+									<span t:type="label" t:for="amountFromInput">Sum from</span>&nbsp;
 								</td>
 								<td nowrap="nowrap">
 									<input t:type="textField" t:id="amountFromInput" t:value="filter.amountFrom" style="width: 80px" />&nbsp;

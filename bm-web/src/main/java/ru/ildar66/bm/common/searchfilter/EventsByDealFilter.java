@@ -97,4 +97,11 @@ public class EventsByDealFilter {
 		}
 		return true;
 	}
+	
+	public boolean isValid(){
+		if(dateFrom != null && dateTo != null && dateTo.before(dateFrom)){
+			return false;
+		}		
+		return true;
+	}
 }
