@@ -73,6 +73,13 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <version>${tapestry-release-version}</version>
             <scope>provided</scope>
         </dependency>
+        
+        <!-- Provides jQuery integration for Tapestry 5 -->
+        <dependency>
+			<groupId>org.got5</groupId>
+			<artifactId>tapestry5-jquery</artifactId>
+			<version>${tapestry-jquery.version}</version>
+		</dependency>
 
     </dependencies>
     <build>
@@ -133,6 +140,23 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
             <id>apache-staging</id>
             <url>https://repository.apache.org/content/groups/staging/</url>
         </repository>
+        
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                    <enabled>true</enabled>
+            </releases>
+        </repository>
+
+	    <repository>
+	        <id>oss—sonatype-snapshot-repo</id>
+	        <url>https://oss.sonatype.org/content/repositories/snapshots
+	        </url>
+	        <releases>
+	            <enabled>false</enabled>
+	        </releases>
+	    </repository>
     </repositories>
 
     <properties>
@@ -140,5 +164,6 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         <servlet-api-release-version>2.5</servlet-api-release-version>
         <testng-release-version>5.14.10</testng-release-version>
         <easymock-release-version>3.0</easymock-release-version>
+        <tapestry-jquery.version>3.3.5</tapestry-jquery.version>
     </properties>
 </project>

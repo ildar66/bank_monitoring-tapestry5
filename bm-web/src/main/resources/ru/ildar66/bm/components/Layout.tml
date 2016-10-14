@@ -29,6 +29,26 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
             </div>
             <div class="menu">
                 <ul>
+                	<li>
+                		<a t:type="jquery/dialogLink" t:dialog="userInfoDialog">userInfoDialog</a>
+                		<div t:type="jquery/dialog" t:clientId="userInfoDialog"
+                			 t:params="literal:{title:'Info about User', modal:'true', height:140, width:400}">
+                                <table style="width: 100%">
+                                    <tr>
+                                        <td>user Name</td>
+                                        <td>ildar66</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Role</td>
+                                        <td>developer</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Department</td>
+                                        <td>IT</td>
+                                    </tr>
+                                </table>
+                        </div>
+                	</li>
                     <li t:type="loop" t:source="pageNames" value="pageName" class="prop:classForPageName">
                         <t:pagelink page="prop:pageName">${pageName}</t:pagelink>
                     </li>
