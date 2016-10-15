@@ -52,6 +52,15 @@
                                     <input t:type="select" t:id="currencySelect" t:model="currencies" t:value="filter.currency"/>
                                 </td>
 							</tr>
+							<tr>
+								<td style="text-align: right;">Client&nbsp;</td>
+								<td colspan="3">
+	                                <input t:type="textField" t:id="contractorNameInput" t:value="filter.contractorName" style="width: 250px;"/>
+	                           		<a t:type="jquery/dialogLink" t:id="showContractorListDialogLink" t:dialog="selectContractorDialog">
+		                                <img src="${context:/img/view.png}" style="margin-bottom: -6px; margin-right: 2px; margin-left: 2px;"/>
+	                                </a>
+	                            </td>
+							</tr>							
 						</table>
 					</td>
 				</tr>
@@ -90,4 +99,8 @@
         </p:empty>
     </table>
 
+	<div t:type="jquery/dialog" t:id="selectContractorDialog" t:clientId="selectContractorDialog"
+    	 t:params="literal:{title:'Select contractor Dialog', modal:'true', height:350, width:500}">
+        	<t:ContractorDictionary t:id="contractorDictionary"/>
+    </div>
 </html>

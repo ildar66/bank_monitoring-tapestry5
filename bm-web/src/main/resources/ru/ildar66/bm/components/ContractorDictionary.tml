@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<t:content>
+	    <form t:type="form" t:id="contractorListForm" id="contractorListForm" t:zone="contractorGridZone" t:clientValidation="none" t:autofocus="false">
+	        <div style="text-align: center;">
+	            Name:&nbsp;<input t:type="textField" t:value="contractorNamePattern" class="input"/>
+	            <input t:type="submit" t:id="contractorSearchButton" t:value="Найти" class="button" style="font-size: 10pt"/>
+	        </div>
+	    </form>
+	    <span t:type="zone" t:id="contractorGridZone" id="contractorGridZone" t:update="show">
+	    	<t:if test="contractorNamePattern">
+		        <table t:type="grid" t:source="contractors" t:row="contractor" t:rowsPerPage="10" t:inPlace="true"
+		               t:include="name" t:model="contractorModel" style="width: 100%" t:pagerPosition="bottom" t:lean="true">
+		            <p:nameCell>
+		                <a t:type="eventLink" t:event="selected" t:context="[contractor.id, contractor.name]">${contractor.name}</a>
+		            </p:nameCell>
+		            <p:empty>
+		                <div style="text-align: center;">Not found</div>
+		            </p:empty>
+		        </table>
+	        </t:if>
+        </span>
+	</t:content>
+</html>	

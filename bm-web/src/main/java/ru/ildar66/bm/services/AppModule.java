@@ -17,6 +17,8 @@ import org.slf4j.Logger;
 
 import ru.ildar66.bm.dao.DealDao;
 import ru.ildar66.bm.dao.DealDaoMockImpl;
+import ru.ildar66.bm.dao.DictionaryDao;
+import ru.ildar66.bm.dao.DictionaryDaoMockImpl;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to configure and extend
@@ -26,13 +28,21 @@ public class AppModule {
 	public void contributeApplicationStateManager(
 			MappedConfiguration<Class<?>, ApplicationStateContribution> configuration) {
 
-		ApplicationStateCreator<DealDao> creator = new ApplicationStateCreator<DealDao>() {
+		ApplicationStateCreator<DealDao> creatorDealDao = new ApplicationStateCreator<DealDao>() {
 			public DealDao create() {
 				return new DealDaoMockImpl();
 			}
 		};
 
-		configuration.add(DealDao.class, new ApplicationStateContribution("session", creator));
+		configuration.add(DealDao.class, new ApplicationStateContribution("session", creatorDealDao));
+
+		ApplicationStateCreator<DictionaryDao> creatorDictionaryDao = new ApplicationStateCreator<DictionaryDao>() {
+			public DictionaryDao create() {
+				return new DictionaryDaoMockImpl();
+			}
+		};
+
+		configuration.add(DictionaryDao.class, new ApplicationStateContribution("session", creatorDictionaryDao));
 	}
 
 	public static void bind(ServiceBinder binder) {

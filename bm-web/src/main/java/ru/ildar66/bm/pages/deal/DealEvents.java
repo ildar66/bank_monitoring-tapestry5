@@ -75,7 +75,7 @@ public class DealEvents {
 		if (validationTracker.inError(amountToInput)) {
 			validationTracker.recordError(amountToInput, messages.get("amountTo-wrong"));
 		}
-		if (!filter.isValid()){
+		if (!filter.isValid()) {
 			validationTracker.recordError("Date period wrong");
 		}
 	}
@@ -91,14 +91,14 @@ public class DealEvents {
 		filter = emptyFilter();
 	}
 
+	void onSelectedFromContractorDictionary(String id, String name) {
+		filter.setContractorName(name);
+	}
+
 	private EventsByDealFilter emptyFilter() {
 		EventsByDealFilter filter = new EventsByDealFilter();
 		return filter;
 	}
-
-	/*
-	 * public List<DealEvent> getDealEvents() { int amount = 10; return dealDao.getDealEvents(0, amount, filter); }
-	 */
 
 	public GridDataSource getDealEvents() {
 		return new GridDataSource() {
