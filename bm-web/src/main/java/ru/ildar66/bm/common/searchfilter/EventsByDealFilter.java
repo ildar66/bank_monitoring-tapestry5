@@ -23,7 +23,7 @@ public class EventsByDealFilter {
 	private Long amountTo;
 	private Currency currency;
 
-	private String contractorName;
+	private String clientName;
 
 	public Long getAmountFrom() {
 		return amountFrom;
@@ -97,7 +97,7 @@ public class EventsByDealFilter {
 		if (getAmountTo() != null && getAmountTo() < event.getDeal().getAmount()) {
 			return false;
 		}
-		if (getContractorName() != null && !event.getContractor().getName().contains(getContractorName())) {
+		if (getClientName() != null && !event.getClient().getName().contains(getClientName())) {
 			return false;
 		}
 		return true;
@@ -110,11 +110,11 @@ public class EventsByDealFilter {
 		return true;
 	}
 
-	public String getContractorName() {
-		return contractorName;
+	public String getClientName() {
+		return clientName;
 	}
 
-	public void setContractorName(String contractorName) {
-		this.contractorName = contractorName;
+	public void setClientName(String clientName) {
+		this.clientName = clientName;
 	}
 }

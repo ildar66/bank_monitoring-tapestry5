@@ -91,8 +91,8 @@ public class DealEvents {
 		filter = emptyFilter();
 	}
 
-	void onSelectedFromContractorDictionary(String id, String name) {
-		filter.setContractorName(name);
+	void onSelectedFromClientDictionary(String id, String name) {
+		filter.setClientName(name);
 	}
 
 	private EventsByDealFilter emptyFilter() {

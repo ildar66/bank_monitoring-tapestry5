@@ -1,6 +1,6 @@
 package ru.ildar66.bm.common.instance;
 
-import ru.ildar66.bm.common.entity.Contractor;
+import ru.ildar66.bm.common.entity.Client;
 import ru.ildar66.bm.common.entity.Deal;
 
 /**
@@ -14,13 +14,13 @@ public class DealEvent {
 	
 	private long id;
 	private Deal deal;
-	private Contractor contractor;
+	private Client client;
 	private String status = EVENT_STATUS_NEW;
 
-	public DealEvent(Deal deal, Contractor contractor) {
+	public DealEvent(Deal deal, Client client) {
 		super();
 		this.deal = deal;
-		this.contractor = contractor;
+		this.client = client;
 	}
 
 	public Deal getDeal() {
@@ -31,12 +31,12 @@ public class DealEvent {
 		this.deal = deal;
 	}
 
-	public Contractor getContractor() {
-		return contractor;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setContractor(Contractor contractor) {
-		this.contractor = contractor;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	public String getStatus() {

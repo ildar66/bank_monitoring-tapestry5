@@ -1,16 +1,16 @@
 package ru.ildar66.bm.common.entity;
 
 /**
- * Contractor entity.
+ * Client entity.
  * 
  * @author Shafigullin Ildar
  * 
  */
-public class Contractor {
+public class Client {
 	private String id;
 	private String name;
 
-	public Contractor(String name) {
+	public Client(String name) {
 		super();
 		this.name = name;
 	}

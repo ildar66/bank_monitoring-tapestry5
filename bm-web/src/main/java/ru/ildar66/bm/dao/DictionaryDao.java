@@ -2,7 +2,7 @@ package ru.ildar66.bm.dao;
 
 import java.util.List;
 
-import ru.ildar66.bm.common.entity.Contractor;
+import ru.ildar66.bm.common.entity.Client;
 
 /**
  * DAO for Dictionaries
@@ -12,8 +12,8 @@ import ru.ildar66.bm.common.entity.Contractor;
  */
 public interface DictionaryDao {
 
-	public List<Contractor> getContractors(int startIndex, int i, String contractorNamePattern);
+	public List<Client> getClients(int startIndex, int i, String clientNamePattern);
 
-	public int getContractorCount(String contractorNamePattern);
+	public int getClientCount(String clientNamePattern);
 
 }

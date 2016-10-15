@@ -13,22 +13,22 @@ import org.apache.tapestry5.ioc.annotations.Inject;
 import org.apache.tapestry5.services.BeanModelSource;
 import org.apache.tapestry5.services.ajax.AjaxResponseRenderer;
 
-import ru.ildar66.bm.common.entity.Contractor;
+import ru.ildar66.bm.common.entity.Client;
 import ru.ildar66.bm.dao.DictionaryDao;
-import ru.ildar66.bm.model.ContractorsDataSource;
+import ru.ildar66.bm.model.ClientDataSource;
 
 /**
- * Dictionary contractors.
+ * Dictionary clients.
  * 
  * @author Shafigullin Ildar
  * 
  */
-public class ContractorDictionary {
+public class ClientDictionary {
 	//@Persist
 	@Property
-	private String contractorNamePattern;
+	private String clientNamePattern;
 	@Property
-	private Contractor contractor;
+	private Client client;
 
 	// @Inject
 	@SessionState
@@ -41,29 +41,29 @@ public class ContractorDictionary {
 	private AjaxResponseRenderer ajaxResponseRenderer;
 
 	@InjectComponent
-	private Zone contractorGridZone;
+	private Zone clientGridZone;
 
-	@OnEvent(value = EventConstants.SELECTED, component = "contractorSearchButton")
-	void searchContractors() {
-		ajaxResponseRenderer.addRender(contractorGridZone);
+	@OnEvent(value = EventConstants.SELECTED, component = "clientSearchButton")
+	void searchClients() {
+		ajaxResponseRenderer.addRender(clientGridZone);
 	}
 
 	boolean onSelected(String id, String name) {
 		// bubbledUp to container
-		contractorNamePattern = null;
+		clientNamePattern = null;
 		return false;
 	}
 
-	public GridDataSource getContractors() {
-		return new ContractorsDataSource(contractorNamePattern, dictionaryDao);
+	public GridDataSource getClients() {
+		return new ClientDataSource(clientNamePattern, dictionaryDao);
 	}
 
-	public BeanModel<Contractor> getContractorModel() {
-		BeanModel<Contractor> contractorModel = beanModelSource.createDisplayModel(Contractor.class, messages);
-		for (String prop : contractorModel.getPropertyNames()) {
-			contractorModel.get(prop).sortable(false);
+	public BeanModel<Client> getClientModel() {
+		BeanModel<Client> clientModel = beanModelSource.createDisplayModel(Client.class, messages);
+		for (String prop : clientModel.getPropertyNames()) {
+			clientModel.get(prop).sortable(false);
 		}
-		return contractorModel;
+		return clientModel;
 	}
 
 }

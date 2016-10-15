@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import ru.ildar66.bm.common.entity.Contractor;
+import ru.ildar66.bm.common.entity.Client;
 import ru.ildar66.bm.common.entity.Currency;
 import ru.ildar66.bm.common.entity.Deal;
 import ru.ildar66.bm.common.entity.DealType;
@@ -33,15 +33,15 @@ public class DealDaoMockImpl implements DealDao {
 		final int DAY = 24 * 60 * 60 * 1000;
 		for (int i = 1; i <= 100; i++) {
 			DealEvent event1 = new DealEvent(new Deal("contractNumber " + 10 * i, 1000L, Currency.EUR, DealType.CREDIT,
-					new Date(NOW - DAY)), new Contractor("clientName_1"));
+					new Date(NOW - DAY)), new Client("clientName_1"));
 			event1.setStatus("ALL CRF");
 			addEvent(event1);
 			DealEvent event2 = new DealEvent(new Deal("contractNumber " + 20 * i, 2000L, Currency.RUR,
-					DealType.ACCREDITIVE, new Date()), new Contractor("clientName_3"));
+					DealType.ACCREDITIVE, new Date()), new Client("clientName_3"));
 			event2.setStatus("Overdue KE");
 			addEvent(event2);
 			addEvent(new DealEvent(new Deal("contractNumber " + 30 * i, 3000L, Currency.USD, DealType.CREDIT, new Date(
-					NOW + DAY)), new Contractor("clientName_5")));
+					NOW + DAY)), new Client("clientName_5")));
 		}
 	}
 
