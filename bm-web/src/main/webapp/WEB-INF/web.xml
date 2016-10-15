@@ -10,6 +10,16 @@ of where to look for pages, components and mixins. -->
         <param-name>tapestry.app-package</param-name>
         <param-value>ru.ildar66.bm</param-value>
     </context-param>
+	<context-param>
+		<!--  We stay with prototype library on old Tapestry components -->
+		<param-name>suppress.prototype</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<context-param>
+		<!--  set aliases for JQuery. -->
+		<param-name>jquery.alias</param-name>
+		<param-value>$j</param-value>
+	</context-param>
     <!--
     Specify some additional Modules for two different execution
     modes: development and qa.
