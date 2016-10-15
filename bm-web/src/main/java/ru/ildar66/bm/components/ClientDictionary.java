@@ -24,9 +24,11 @@ import ru.ildar66.bm.model.ClientDataSource;
  * 
  */
 public class ClientDictionary {
-	//@Persist
+	public final static String ALL_CLIENTS_PATTERN = "*";
+
+	// @Persist
 	@Property
-	private String clientNamePattern;
+	private String clientNamePattern = ALL_CLIENTS_PATTERN;
 	@Property
 	private Client client;
 

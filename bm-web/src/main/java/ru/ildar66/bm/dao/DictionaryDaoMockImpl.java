@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.ildar66.bm.common.entity.Client;
+import ru.ildar66.bm.components.ClientDictionary;
 
 /**
  * Mock DAO for Dictionaries
@@ -12,7 +13,7 @@ import ru.ildar66.bm.common.entity.Client;
  * 
  */
 public class DictionaryDaoMockImpl implements DictionaryDao {
-	private List<Client> dealEvents = new ArrayList<Client>();
+	private List<Client> clients = new ArrayList<Client>();
 
 	public DictionaryDaoMockImpl() {
 		initMockData();
@@ -20,16 +21,35 @@ public class DictionaryDaoMockImpl implements DictionaryDao {
 
 	private void initMockData() {
 		for (int i = 0; i < 10; i++) {
-			dealEvents.add(new Client("clientName_" + i));
+			clients.add(new Client("clientName_" + i));
 		}
 	}
 
-	public List<Client> getClients(int startIndex, int i, String clientNamePattern) {
-		return dealEvents;
+	public List<Client> getClients(int startIndex, int amount, String clientNamePattern) {
+		List<Client> matches = new ArrayList<Client>();
+		for (Client client : clients) {
+			if (isMatch(clientNamePattern, client)) {
+				matches.add(client);
+			}
+		}
+		return matches;
+	}
+
+	private boolean isMatch(String clientNamePattern, Client client) {
+		if (clientNamePattern.equals(ClientDictionary.ALL_CLIENTS_PATTERN)) {
+			return true;
+		}
+		return clientNamePattern != null && client.getName().contains(clientNamePattern);
 	}
 
 	public int getClientCount(String clientNamePattern) {
-		return dealEvents.size();
+		int result = 0;
+		for (Client client : clients) {
+			if (isMatch(clientNamePattern, client)) {
+				result++;
+			}
+		}
+		return result;
 	}
 
 }
