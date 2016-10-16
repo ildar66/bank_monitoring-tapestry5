@@ -7,3 +7,5 @@ Branches:
 2)v.1.0-List-events-by-Deal-(mockDB with tapestry5 native Inject-implementation)
 
 3)v.1.1-ListDealEvents-(used gridDataSource-paging-sorting)
+
+4)v.2.0-jQuery_Tapestry_integration(modal-dialog clientDictionary example)
