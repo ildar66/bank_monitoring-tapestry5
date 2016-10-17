@@ -13,16 +13,13 @@ import ru.ildar66.bm.components.ClientDictionary;
  * 
  */
 public class DictionaryDaoMockImpl implements DictionaryDao {
-	private List<Client> clients = new ArrayList<Client>();
+	private List<Client> clients;
 
 	public DictionaryDaoMockImpl() {
-		initMockData();
 	}
 
-	private void initMockData() {
-		for (int i = 0; i < 10; i++) {
-			clients.add(new Client("clientName_" + i));
-		}
+	public void setClients(List<Client> clients) {
+		this.clients = clients;
 	}
 
 	public List<Client> getClients(int startIndex, int amount, String clientNamePattern) {
