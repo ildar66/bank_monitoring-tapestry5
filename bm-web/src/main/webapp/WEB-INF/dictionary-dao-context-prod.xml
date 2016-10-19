@@ -11,6 +11,23 @@
                            http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
     <bean class="ru.ildar66.bm.dao.DictionaryDaoImpl">
         <!-- <property name="dataSource" ref="dataSource"/> -->
-        
+        <property name="sql">
+        	<util:map>
+        		<entry key="GET_CLIENTS">
+                     <value>
+                        <![CDATA[
+                            select * from clients where lower(name) like lower(?)
+                        ]]>
+                    </value>       		
+        		</entry>
+        		<entry key="GET_CLIENT_COUNT">
+                     <value>
+                        <![CDATA[
+                            select count(*) from clients where lower(name) like lower(?)
+                        ]]>
+                    </value>       		
+        		</entry>
+        	</util:map>
+        </property>
     </bean>
 </beans>
