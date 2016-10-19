@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE Configure PUBLIC "-//Mort Bay Consulting//DTD Configure//EN" "http://jetty.mortbay.org/configure.dtd">
+<Configure class="org.mortbay.jetty.webapp.WebAppContext">
+    <New id="dataSource" class="org.mortbay.jetty.plus.naming.Resource">
+        <Arg>jdbc/BmDs</Arg>
+        <Arg>
+            <New class="oracle.jdbc.pool.OracleConnectionPoolDataSource">
+                <Set name="URL">jdbc:oracle:thin:@oracle.ildar66.ru:1521:bankDS</Set>
+                <Set name="User">USER</Set>
+                <Set name="Password">PASS</Set>
+            </New>
+        </Arg>
+    </New>
+</Configure>

@@ -10,7 +10,7 @@
                            http://www.springframework.org/schema/jee
                            http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
     <bean class="ru.ildar66.bm.dao.DictionaryDaoImpl">
-        <!-- <property name="dataSource" ref="dataSource"/> -->
+        <property name="dataSource" ref="dataSource"/>
         <property name="sql">
         	<util:map>
         		<entry key="GET_CLIENTS">
