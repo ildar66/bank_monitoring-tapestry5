@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import ru.ildar66.bm.common.entity.Client;
+import ru.ildar66.bm.dao.util.AbstractDao;
 
 /**
  * DAO implementation for Dictionaries
@@ -11,8 +12,7 @@ import ru.ildar66.bm.common.entity.Client;
  * @author Shafigullin Ildar
  * 
  */
-public class DictionaryDaoImpl implements DictionaryDao {
-	private Map<String, String> sql;
+public class DictionaryDaoImpl extends AbstractDao implements DictionaryDao {
 
 	public List<Client> getClients(int startIndex, int i, String clientNamePattern) {
 		// TODO Auto-generated method stub
@@ -23,10 +23,6 @@ public class DictionaryDaoImpl implements DictionaryDao {
 		// TODO Auto-generated method stub
 		System.out.println(sql);
 		return 0;
-	}
-
-	public void setSql(Map<String, String> sql) {
-		this.sql = sql;
 	}
 
 }

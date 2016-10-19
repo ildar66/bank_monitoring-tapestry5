@@ -87,7 +87,12 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
 			<artifactId>tapestry-spring</artifactId>
 			<version>${tapestry-release-version}</version>
 		</dependency>
-
+		<dependency>
+           <groupId>org.springframework</groupId>
+           <artifactId>spring-jdbc</artifactId>
+           <version>${spring.version}</version>
+        </dependency>
+		
     </dependencies>
     <build>
         <finalName>bm-web</finalName>
@@ -180,5 +185,6 @@ of testing facilities designed for use with TestNG (http://testng.org/), so it's
         <easymock-release-version>3.0</easymock-release-version>
         <tapestry-jquery.version>3.3.5</tapestry-jquery.version>
         <oracle.jdbc.version>6.0</oracle.jdbc.version>
+        <spring.version>3.1.0.RELEASE</spring.version>
     </properties>
 </project>
