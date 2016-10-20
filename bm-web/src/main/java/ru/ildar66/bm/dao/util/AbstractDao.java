@@ -12,7 +12,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * 
  */
 public abstract class AbstractDao {
-	protected JdbcTemplate jdbcTemplate = null;
+	private JdbcTemplate jdbcTemplate = null;
 	protected Map<String, String> sql;
 
 	public void setDataSource(DataSource dataSource) {
@@ -23,8 +23,11 @@ public abstract class AbstractDao {
 		return jdbcTemplate.getDataSource();
 	}
 
-	public void setSql(Map<String, String> sql) {
-		this.sql = sql;
+	protected JdbcTemplate getJdbcTemplate() {
+		return jdbcTemplate;
 	}
 
+	public void setSql(Map<String, String> map) {
+		this.sql = map;
+	}
 }

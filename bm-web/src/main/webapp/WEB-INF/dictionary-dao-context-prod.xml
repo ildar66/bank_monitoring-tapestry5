@@ -13,14 +13,14 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="sql">
         	<util:map>
-        		<entry key="GET_CLIENTS">
+        		<entry key="CLIENTS_BY_NAME">
                      <value>
                         <![CDATA[
-                            select * from clients where lower(name) like lower(?)
+                            select id client_id, name client_name from clients where lower(name) like lower(?)
                         ]]>
                     </value>       		
         		</entry>
-        		<entry key="GET_CLIENT_COUNT">
+        		<entry key="CLIENTS_BY_NAME_COUNT">
                      <value>
                         <![CDATA[
                             select count(*) from clients where lower(name) like lower(?)

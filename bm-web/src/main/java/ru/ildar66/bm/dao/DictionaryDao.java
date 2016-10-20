@@ -12,7 +12,7 @@ import ru.ildar66.bm.common.entity.Client;
  */
 public interface DictionaryDao {
 
-	public List<Client> getClients(int startIndex, int i, String clientNamePattern);
+	public List<Client> getClients(int startIndex, int amount, String clientNamePattern);
 
 	public int getClientCount(String clientNamePattern);
 
