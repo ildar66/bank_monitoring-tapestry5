@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ru.ildar66.bm.common.entity.Client;
-import ru.ildar66.bm.components.ClientDictionary;
 
 /**
  * Mock DAO for Dictionaries
@@ -13,6 +12,7 @@ import ru.ildar66.bm.components.ClientDictionary;
  * 
  */
 public class DictionaryDaoMockImpl implements DictionaryDao {
+	public final static String ALL_CLIENTS_PATTERN = "*";
 	private List<Client> clients;
 
 	public DictionaryDaoMockImpl() {
@@ -33,7 +33,7 @@ public class DictionaryDaoMockImpl implements DictionaryDao {
 	}
 
 	private boolean isMatch(String clientNamePattern, Client client) {
-		if (clientNamePattern.equals(ClientDictionary.ALL_CLIENTS_PATTERN)) {
+		if (clientNamePattern.equals(ALL_CLIENTS_PATTERN)) {
 			return true;
 		}
 		return clientNamePattern != null && client.getName().contains(clientNamePattern);
