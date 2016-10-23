@@ -1,12 +1,19 @@
 package ru.ildar66.bm.services;
 
+import static org.apache.commons.codec.binary.Hex.encodeHex;
+
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import org.apache.tapestry5.SymbolConstants;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
+import org.apache.tapestry5.ioc.annotations.Contribute;
 import org.apache.tapestry5.ioc.annotations.Local;
+import org.apache.tapestry5.ioc.services.ApplicationDefaults;
+import org.apache.tapestry5.ioc.services.SymbolProvider;
 import org.apache.tapestry5.services.ApplicationStateContribution;
 import org.apache.tapestry5.services.ApplicationStateCreator;
 import org.apache.tapestry5.services.Request;
@@ -120,5 +127,26 @@ public class AppModule {
 		// within the pipeline.
 
 		configuration.add("Timing", filter);
+	}
+
+	/**
+	 * Setups application defaults.
+	 * 
+	 * @param configuration
+	 *            {@link MappedConfiguration} instance
+	 */
+	@ApplicationDefaults
+	@Contribute(SymbolProvider.class)
+	public static void setupDefaults(MappedConfiguration<String, String> configuration) {
+		// configuration.add(SymbolConstants.MINIFICATION_ENABLED, "true");
+		// configuration.add(SymbolConstants.OMIT_GENERATOR_META, "true");
+		try {
+			configuration.add(SymbolConstants.HMAC_PASSPHRASE, new String(encodeHex(MessageDigest.getInstance("MD5")
+					.digest("www.ildar66.ru/bm/hmac-key".getBytes()))));
+		} catch (NoSuchAlgorithmException e) {
+			/* will never happen */
+			e = null;
+		}
+		// configuration.add("dmy-format", "dd.MM.yyyy");
 	}
 }
