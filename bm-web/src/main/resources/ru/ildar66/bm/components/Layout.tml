@@ -63,9 +63,12 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
 				<ul>
 					<li class="search" style="background: none;"></li>
 					<li>
-						<h2></h2>
+						<h2>Calendar events</h2>
 						<div class="leftSidebar-content">
 							<t:pagelink page="deal/events">List events by Deal</t:pagelink>
+						</div>
+						<div class="leftSidebar-content">
+							<t:pagelink page="event/create">Create bank event</t:pagelink>
 						</div>
 					</li>
 				</ul>

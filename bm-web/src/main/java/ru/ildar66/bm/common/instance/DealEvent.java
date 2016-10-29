@@ -1,7 +1,11 @@
 package ru.ildar66.bm.common.instance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ru.ildar66.bm.common.entity.Client;
 import ru.ildar66.bm.common.entity.Deal;
+import ru.ildar66.bm.common.entity.NotificationRecipient;
 
 /**
  * event for Deals.
@@ -11,16 +15,26 @@ import ru.ildar66.bm.common.entity.Deal;
  */
 public class DealEvent {
 	private final static String EVENT_STATUS_NEW = "NEW";
-	
-	private long id;
+
+	private Long id;
+	private String name;
 	private Deal deal;
 	private Client client;
 	private String status = EVENT_STATUS_NEW;
+	private List<NotificationRecipient> recipients = new ArrayList<NotificationRecipient>();
 
 	public DealEvent(Deal deal, Client client) {
 		super();
 		this.deal = deal;
 		this.client = client;
+	}
+
+	public DealEvent() {
+		super();
+	}
+
+	public List<NotificationRecipient> getRecipients() {
+		return recipients;
 	}
 
 	public Deal getDeal() {
@@ -47,11 +61,19 @@ public class DealEvent {
 		this.status = status;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 }

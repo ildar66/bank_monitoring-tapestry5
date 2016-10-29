@@ -7,6 +7,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import org.apache.tapestry5.SymbolConstants;
+import org.apache.tapestry5.ValueEncoder;
 import org.apache.tapestry5.ioc.MappedConfiguration;
 import org.apache.tapestry5.ioc.OrderedConfiguration;
 import org.apache.tapestry5.ioc.ServiceBinder;
@@ -20,12 +21,20 @@ import org.apache.tapestry5.services.Request;
 import org.apache.tapestry5.services.RequestFilter;
 import org.apache.tapestry5.services.RequestHandler;
 import org.apache.tapestry5.services.Response;
+import org.apache.tapestry5.services.ValueEncoderFactory;
+import org.apache.tapestry5.services.ValueEncoderSource;
 import org.slf4j.Logger;
 
+import ru.ildar66.bm.common.entity.NotificationRecipient;
+import ru.ildar66.bm.common.entity.User;
+import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.dao.DealDao;
 import ru.ildar66.bm.dao.DealDaoMockImpl;
 import ru.ildar66.bm.dao.DictionaryDao;
 import ru.ildar66.bm.dao.DictionaryDaoMockImpl;
+import ru.ildar66.bm.services.impl.DealEventEncoder;
+import ru.ildar66.bm.services.impl.NotificationRecipientEncoder;
+import ru.ildar66.bm.services.impl.UserEncoder;
 
 /**
  * This module is automatically included as part of the Tapestry IoC Registry, it's a good place to configure and extend
@@ -78,6 +87,27 @@ public class AppModule {
 		// you can extend this list of locales (it's a comma separated series of locale names;
 		// the first locale name is the default when there's no reasonable match).
 		configuration.add(SymbolConstants.SUPPORTED_LOCALES, "en");
+	}
+
+	@Contribute(ValueEncoderSource.class)
+	public static void provideEncoders(MappedConfiguration<Class<?>, ValueEncoderFactory<?>> configuration,
+			final DealDao dealDao, final DictionaryDao dictionaryDao) {
+		contributeEncoder(configuration, DealEvent.class, new DealEventEncoder(dealDao));
+		contributeEncoder(configuration, NotificationRecipient.class, new NotificationRecipientEncoder(dealDao));
+		contributeEncoder(configuration, User.class, new UserEncoder(dictionaryDao));
+	}
+
+	private static <T> void contributeEncoder(MappedConfiguration<Class<?>, ValueEncoderFactory<?>> configuration,
+			Class<T> clazz, final ValueEncoder<T> encoder) {
+
+		ValueEncoderFactory<T> factory = new ValueEncoderFactory<T>() {
+
+			public ValueEncoder<T> create(Class<T> clazz) {
+				return encoder;
+			}
+		};
+
+		configuration.add(clazz, factory);
 	}
 
 	/**

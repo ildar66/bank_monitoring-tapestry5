@@ -23,8 +23,29 @@
 			<constructor-arg name="name" value="clientName_5" />
 		</bean>
 	</util:list>
+	<util:list id="users">
+		<bean class="ru.ildar66.bm.common.entity.User">
+			<constructor-arg name="id" value="1" />
+			<constructor-arg name="firstName" value="FirsName_1" />
+			<constructor-arg name="lastName" value="LastName_1" />
+			<constructor-arg name="email" value="LastName_1@email.com" />
+		</bean>
+		<bean class="ru.ildar66.bm.common.entity.User">
+			<constructor-arg name="id" value="2" />
+			<constructor-arg name="firstName" value="FirsName_2" />
+			<constructor-arg name="lastName" value="LastName_2" />
+			<constructor-arg name="email" value="LastName_2@email.com" />
+		</bean>
+		<bean class="ru.ildar66.bm.common.entity.User">
+			<constructor-arg name="id" value="3" />
+			<constructor-arg name="firstName" value="FirsName_3" />
+			<constructor-arg name="lastName" value="LastName_3" />
+			<constructor-arg name="email" value="LastName_3@email.com" />
+		</bean>
+	</util:list>
 	<bean class="ru.ildar66.bm.dao.DictionaryDaoMockImpl">
 		<property name="clients" ref="clients" />
+		<property name="users" ref="users" />
 	</bean>
 
 </beans>

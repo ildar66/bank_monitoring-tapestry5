@@ -1,0 +1,45 @@
+<html t:type="layout" title="Create bank event"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+      
+	<fieldset><legend>create bank Event</legend>      
+    <p>${message}</p>
+
+    <form t:type="form" t:clientValidation="none">
+        <t:errors/>
+        <div class="form-row">
+            <label t:type="label" for="eventName"></label>
+            <input t:type="textfield" t:id="eventName" value="event.name" t:validate="required" size="50"/>
+        </div>
+
+        <div t:type="if" t:test="eventPersisted">
+            <h4>Event notification recipients:
+            <a t:type="jquery/dialogLink" t:id="showUserListDialogLink" t:dialog="selectUserDialog">
+            	<img src="${context:/img/view.png}" title="select Recipients from Dictionary"
+            		style="margin-bottom: -6px; margin-right: 2px; margin-left: 2px;"/>
+            </a></h4>
+
+            <div t:type="ajaxformloop" t:id="recipients" t:source="event.recipients" t:value="currentRecipient">
+                Name:<input t:type="textfield" t:id="recipientName" value="currentRecipient.name"/>
+                Email:<input t:type="textfield" t:id="recipientEmail" value="currentRecipient.email"/> |
+
+                <a t:type="removerowlink">Remove recipient</a>
+
+                <p:addRow>
+                    <a t:type="addrowlink">Add blank recipient</a>
+                </p:addRow>
+            </div>
+
+        </div>
+
+        <div>
+            <input type="submit" value="Save event"/>
+        </div>
+	</form>
+	</fieldset>
+	
+	<div t:type="jquery/dialog" t:id="selectUserDialog" t:clientId="selectUserDialog"
+    	 t:params="literal:{title:'Select Recipients Dialog(* - all)', modal:'true', height:350, width:500}">
+        	<t:UserDictionary t:id="userDictionary"/>
+    </div>      
+</html>

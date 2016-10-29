@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+	<t:content>
+	    <form t:type="form" t:id="userListForm" id="userListForm" t:zone="userGridZone" t:clientValidation="none" t:autofocus="false">
+	        <div style="text-align: center;">
+	            Name:&nbsp;<input t:type="textField" t:value="userNamePattern" class="input"/>
+	            <input t:type="submit" t:id="userSearchButton" t:value="Найти" class="button" style="font-size: 10pt"/>
+	        </div>
+	    </form>
+	    <span t:type="zone" t:id="userGridZone" id="userGridZone" t:update="show">
+	    	<t:if test="userNamePattern">
+		        <table t:type="grid" t:source="users" t:row="user" t:rowsPerPage="10" t:inPlace="true"
+		               t:include="lastName, firstName, email" t:model="userModel" style="width: 100%" t:pagerPosition="bottom" t:lean="true">
+		            <p:lastNameCell>
+		                <a t:type="eventLink" t:event="selected" t:context="[user]">${user.lastName}</a>
+		            </p:lastNameCell>
+		            <p:empty>
+		                <div style="text-align: center;">Users Not found</div>
+		            </p:empty>
+		        </table>
+	        </t:if>
+        </span>
+	</t:content>
+</html>	

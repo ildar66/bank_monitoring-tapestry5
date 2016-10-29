@@ -74,31 +74,38 @@ public class EventsByDealFilter {
 	}
 
 	public boolean match(DealEvent event) {
+		// match for event status:
 		if (getSelectedStatuses() != null && getSelectedStatuses().size() > 0
 				&& !getSelectedStatuses().contains(event.getStatus())) {
 			return false;
 		}
-		if (getDateFrom() != null && getDateFrom().after(event.getDeal().getDate())) {
-			return false;
-		}
-		if (getDateTo() != null) {
-			Date dateTo = new Date(getDateTo().getTime() + 24 * 60 * 60 * 1000);
-			if (dateTo.before(event.getDeal().getDate())) {
+		// match fo Deal:
+		if (event.getDeal() != null) {
+			if (getDateFrom() != null && getDateFrom().after(event.getDeal().getDate())) {
+				return false;
+			}
+			if (getDateTo() != null) {
+				Date dateTo = new Date(getDateTo().getTime() + 24 * 60 * 60 * 1000);
+				if (dateTo.before(event.getDeal().getDate())) {
+					return false;
+				}
+			}
+
+			if (getCurrency() != null && getCurrency() != event.getDeal().getCurrency()) {
+				return false;
+			}
+			if (getAmountFrom() != null && getAmountFrom() > event.getDeal().getAmount()) {
+				return false;
+			}
+			if (getAmountTo() != null && getAmountTo() < event.getDeal().getAmount()) {
 				return false;
 			}
 		}
-
-		if (getCurrency() != null && getCurrency() != event.getDeal().getCurrency()) {
-			return false;
-		}
-		if (getAmountFrom() != null && getAmountFrom() > event.getDeal().getAmount()) {
-			return false;
-		}
-		if (getAmountTo() != null && getAmountTo() < event.getDeal().getAmount()) {
-			return false;
-		}
-		if (getClientName() != null && !event.getClient().getName().contains(getClientName())) {
-			return false;
+		// match for Client
+		if (event.getClient() != null) {
+			if (getClientName() != null && !event.getClient().getName().contains(getClientName())) {
+				return false;
+			}
 		}
 		return true;
 	}

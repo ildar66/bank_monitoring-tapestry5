@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import ru.ildar66.bm.common.entity.Client;
 import ru.ildar66.bm.common.entity.Currency;
 import ru.ildar66.bm.common.entity.Deal;
 import ru.ildar66.bm.common.entity.DealType;
+import ru.ildar66.bm.common.entity.NotificationRecipient;
 import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.common.searchfilter.EventsByDealFilter;
 import ru.ildar66.bm.common.util.SortCriterion;
@@ -23,6 +26,7 @@ import ru.ildar66.bm.common.util.SortDirection;
  */
 public class DealDaoMockImpl implements DealDao {
 	private List<DealEvent> dealEvents = new ArrayList<DealEvent>();
+	private Map<String, NotificationRecipient> notificationRecipients = new HashMap<String, NotificationRecipient>();
 
 	public DealDaoMockImpl() {
 		initMockData();
@@ -103,10 +107,37 @@ public class DealDaoMockImpl implements DealDao {
 
 	}
 
-	private void addEvent(DealEvent di) {
+	private void addEvent(DealEvent event) {
 		long newId = dealEvents.size() + 1;
-		di.setId(newId);
-		dealEvents.add(di);
+		event.setId(newId);
+		dealEvents.add(event);
+	}
+
+	public void persist(DealEvent event) {
+		Long id = event.getId();
+		if (id == null) {
+			addEvent(event);
+		} else {
+			for (NotificationRecipient recipient : event.getRecipients()) {
+				if (recipient.getId() == null) {
+					recipient.setId("" + System.currentTimeMillis());
+				}
+				notificationRecipients.put(recipient.getId(), recipient);
+			}
+		}
+	}
+
+	public DealEvent getDealEventById(Long id) {
+		for (DealEvent event : dealEvents) {
+			if (event.getId().equals(id)) {
+				return event;
+			}
+		}
+		return null;
+	}
+
+	public NotificationRecipient getNotificationRecipientById(String id) {
+		return notificationRecipients.get(id);
 	}
 
 }
