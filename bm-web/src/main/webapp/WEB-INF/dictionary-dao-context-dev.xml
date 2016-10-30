@@ -42,6 +42,12 @@
 			<constructor-arg name="lastName" value="LastName_3" />
 			<constructor-arg name="email" value="LastName_3@email.com" />
 		</bean>
+		<bean class="ru.ildar66.bm.common.entity.User">
+			<constructor-arg name="id" value="4" />
+			<constructor-arg name="firstName" value="FirsName_4" />
+			<constructor-arg name="lastName" value="LastName_4" />
+			<constructor-arg name="email" value="LastName_4@email.com" />
+		</bean>
 	</util:list>
 	<bean class="ru.ildar66.bm.dao.DictionaryDaoMockImpl">
 		<property name="clients" ref="clients" />
