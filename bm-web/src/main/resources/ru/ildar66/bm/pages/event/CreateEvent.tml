@@ -9,7 +9,7 @@
         <t:errors/>
         <div class="form-row">
             <label t:type="label" for="eventName"></label>
-            <input t:type="textfield" t:id="eventName" value="event.name" t:validate="required" size="50"/>
+            <input t:type="textfield" t:id="eventName" value="event.name" t:validate="required" size="50" t:label="Name: "/>
         </div>
 
         <div t:type="if" t:test="eventPersisted">
@@ -32,7 +32,7 @@
 
         </div>
 
-        <div>
+        <div  style="margin: 10px;">
             <input type="submit" value="Save event"/>
         </div>
 	</form>
