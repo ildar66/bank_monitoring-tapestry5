@@ -6,9 +6,11 @@
     <beans profile="prod">
         <import resource="dictionary-dao-context-prod.xml"/>
         <!-- <import resource="deal-dao-context-prod.xml"/> -->
+        <!-- <import resource="event-dao-context-prod.xml"/> -->
     </beans>
     <beans profile="dev">
         <import resource="dictionary-dao-context-dev.xml"/>
         <import resource="deal-dao-context-dev.xml"/>
+        <import resource="event-dao-context-dev.xml"/>
     </beans>
 </beans>

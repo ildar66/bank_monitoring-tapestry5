@@ -49,9 +49,68 @@
 			<constructor-arg name="email" value="LastName_4@email.com" />
 		</bean>
 	</util:list>
+	<bean id="clientMoType" class="ru.ildar66.bm.common.entity.MonitoredObjectType">
+		<property name="id" value="1" />
+		<property name="name" value="Client" />
+	</bean>
+	<bean id="dealMoType" class="ru.ildar66.bm.common.entity.MonitoredObjectType">
+		<property name="id" value="2" />
+		<property name="name" value="Deal" />
+	</bean>
+	<bean id="supplyMoType" class="ru.ildar66.bm.common.entity.MonitoredObjectType">
+		<property name="id" value="3" />
+		<property name="name" value="Sypply" />
+	</bean>
+	<bean id="properCreditUseClientEtg" class="ru.ildar66.bm.common.entity.EventTypeGroup">
+		<property name="id" value="1" />
+		<property name="name" value="properCreditUseContractorEtg(client)" />
+		<property name="monitoredObjectType" ref="clientMoType" />
+	</bean>
+	<bean id="paymentObligationClientEtg" class="ru.ildar66.bm.common.entity.EventTypeGroup">
+		<property name="id" value="2" />
+		<property name="name" value="paymentObligationContractorEtg(client)" />
+		<property name="monitoredObjectType" ref="clientMoType" />
+	</bean>
+	<bean id="properCreditUseClientEventType1" class="ru.ildar66.bm.common.entity.EventType">
+		<property name="id" value="1" />
+		<property name="name" value="properCreditUseClientEventType1" />
+		<property name="eventTypeGroup" ref="properCreditUseClientEtg" />
+	</bean>
+	<bean id="properCreditUseClientEventType2" class="ru.ildar66.bm.common.entity.EventType">
+		<property name="id" value="2" />
+		<property name="name" value="properCreditUseClientEventType2" />
+		<property name="eventTypeGroup" ref="properCreditUseClientEtg" />
+	</bean>
 	<bean class="ru.ildar66.bm.dao.DictionaryDaoMockImpl">
 		<property name="clients" ref="clients" />
 		<property name="users" ref="users" />
+		<property name="monitoredObjectTypes">
+			<util:list>
+				<ref bean="clientMoType" />
+				<ref bean="dealMoType" />
+				<ref bean="supplyMoType" />
+			</util:list>
+		</property>
+		<property name="eventTypeGroups">
+			<util:map>
+				<entry key="#{clientMoType.id}">
+					<list>
+						<ref bean="properCreditUseClientEtg" />
+						<ref bean="paymentObligationClientEtg" />
+					</list>
+				</entry>
+			</util:map>
+		</property>
+		<property name="eventTypes">
+			<util:map>
+				<entry key="#{properCreditUseClientEtg.id}">
+					<list>
+						<ref bean="properCreditUseClientEventType1" />
+						<ref bean="properCreditUseClientEventType2" />
+					</list>
+				</entry>
+			</util:map>
+		</property>
 	</bean>
 
 </beans>

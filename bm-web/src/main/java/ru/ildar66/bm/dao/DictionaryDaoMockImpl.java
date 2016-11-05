@@ -2,8 +2,12 @@ package ru.ildar66.bm.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import ru.ildar66.bm.common.entity.Client;
+import ru.ildar66.bm.common.entity.EventType;
+import ru.ildar66.bm.common.entity.EventTypeGroup;
+import ru.ildar66.bm.common.entity.MonitoredObjectType;
 import ru.ildar66.bm.common.entity.User;
 
 /**
@@ -16,8 +20,24 @@ public class DictionaryDaoMockImpl implements DictionaryDao {
 	public final static String ALL_PATTERN = "*";
 	private List<Client> clients;
 	private List<User> users;
+	private List<MonitoredObjectType> monitoredObjectTypes;
+	private Map<Long, List<EventTypeGroup>> eventTypeGroups;
+	private Map<Long, List<EventType>> eventTypes;
 
 	public DictionaryDaoMockImpl() {
+		super();
+	}
+
+	public void setEventTypeGroups(Map<Long, List<EventTypeGroup>> eventTypeGroups) {
+		this.eventTypeGroups = eventTypeGroups;
+	}
+
+	public void setMonitoredObjectTypes(List<MonitoredObjectType> monitoredObjectTypes) {
+		this.monitoredObjectTypes = monitoredObjectTypes;
+	}
+
+	public void setEventTypes(Map<Long, List<EventType>> eventTypes) {
+		this.eventTypes = eventTypes;
 	}
 
 	public void setClients(List<Client> clients) {
@@ -89,6 +109,18 @@ public class DictionaryDaoMockImpl implements DictionaryDao {
 			}
 		}
 		return null;
+	}
+
+	public List<MonitoredObjectType> getMonitoredObjectTypes() {
+		return monitoredObjectTypes;
+	}
+
+	public List<EventTypeGroup> getEventTypeGroups(Long monitoredObjectTypeId) {
+		return eventTypeGroups.get(monitoredObjectTypeId);
+	}
+
+	public List<EventType> getEventTypes(Long eventTypeGroupId) {
+		return eventTypes.get(eventTypeGroupId);
 	}
 
 }

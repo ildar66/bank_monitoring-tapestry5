@@ -3,6 +3,9 @@ package ru.ildar66.bm.dao;
 import java.util.List;
 
 import ru.ildar66.bm.common.entity.Client;
+import ru.ildar66.bm.common.entity.EventType;
+import ru.ildar66.bm.common.entity.EventTypeGroup;
+import ru.ildar66.bm.common.entity.MonitoredObjectType;
 import ru.ildar66.bm.common.entity.User;
 import ru.ildar66.bm.dao.mapper.ClientRowMapper;
 import ru.ildar66.bm.dao.util.AbstractDao;
@@ -36,6 +39,21 @@ public class DictionaryDaoImpl extends AbstractDao implements DictionaryDao {
 	}
 
 	public User getUserById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<MonitoredObjectType> getMonitoredObjectTypes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<EventTypeGroup> getEventTypeGroups(Long monitoredObjectTypeId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<EventType> getEventTypes(Long eventTypeGroupId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

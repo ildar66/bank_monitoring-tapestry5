@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"	xmlns:p="tapestry:parameter">
+	<t:content>
+		<t:if test="modeADD">
+			<table t:type="zone" t:id="classifierSelectZone" t:update="show" id="eventCategoryZone">
+		        <tr>
+					<td>
+						<span t:type="label" t:for="monitoredObjectTypeSelect">Object monitoring:</span>
+					</td>
+					<td>
+						<input t:type="select" t:id="monitoredObjectTypeSelect"
+							t:model="monitoredObjectTypeSelectModel" t:encoder="monitoredObjectTypeValueEncoder"
+							t:blankOption="always" t:zone="^" t:blankLabel="------------------------"
+							t:value="event.classifier.monitoredObjectType" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+	                    <span t:type="label" t:for="eventTypeGroupSelect">Group event:</span>
+	                </td>
+					<td>
+						<input t:type="select" t:id="eventTypeGroupSelect"
+							t:model="eventTypeGroupSelectModel" t:encoder="eventTypeGroupValueEncoder"
+							t:blankOption="always" t:zone="^" t:blankLabel="------------------------"
+							t:value="event.classifier.eventTypeGroup" />
+					</td>
+				</tr>
+	            <tr>
+	                 <td>
+	                     <span t:type="label" t:for="eventTypeSelect">Type event:</span>
+	                 </td>
+	                 <td>
+	                     <input t:type="select" t:id="eventTypeSelect" t:model="eventTypeSelectModel"
+	                            t:encoder="eventTypeValueEncoder" t:blankOption="always" t:zone="^"
+	                            t:blankLabel="------------------------" t:value="event.classifier.eventType"
+	                            t:validate="required"/>
+	                 </td>
+	             </tr>
+			</table>		
+		</t:if>
+		<t:if test="modeEdit">
+			// TODO
+		</t:if>
+	</t:content>
+</html>

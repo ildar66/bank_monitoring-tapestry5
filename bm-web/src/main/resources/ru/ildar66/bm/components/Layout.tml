@@ -70,6 +70,12 @@ Description: A Web 2.0 design with fluid width suitable for blogs and small webs
 						<div class="leftSidebar-content">
 							<t:pagelink page="event/create">Create bank event</t:pagelink>
 						</div>
+						<div class="leftSidebar-content">
+							<t:pagelink page="event/classifier">Create classifier event</t:pagelink>
+						</div>
+						<div class="leftSidebar-content">
+							<t:pagelink page="event/typed">Create typed event</t:pagelink>
+						</div>
 					</li>
 				</ul>
 			</div>

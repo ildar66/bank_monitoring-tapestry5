@@ -1,0 +1,24 @@
+<html t:type="layout" title="Create classifier event"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+      
+	<fieldset><legend>classifier Event</legend>      
+    <p>${message}</p>
+
+    <form t:type="form" t:clientValidation="none">
+        <t:errors/>
+        
+        <t:event.Head event="event" mode="literal:ADD" t:id="eventHead"/>
+
+        <div t:type="if" t:test="eventPersisted">
+            <h4>Add other fields:</h4>
+ 
+        </div>
+
+        <div  style="margin: 10px;">
+            <input type="submit" value="Save event"/>
+        </div>
+	</form>
+	</fieldset>
+	
+</html>

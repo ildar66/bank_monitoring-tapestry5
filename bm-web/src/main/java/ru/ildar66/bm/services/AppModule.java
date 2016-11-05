@@ -27,11 +27,14 @@ import org.slf4j.Logger;
 
 import ru.ildar66.bm.common.entity.NotificationRecipient;
 import ru.ildar66.bm.common.entity.User;
+import ru.ildar66.bm.common.instance.BmEvent;
 import ru.ildar66.bm.common.instance.DealEvent;
 import ru.ildar66.bm.dao.DealDao;
 import ru.ildar66.bm.dao.DealDaoMockImpl;
 import ru.ildar66.bm.dao.DictionaryDao;
 import ru.ildar66.bm.dao.DictionaryDaoMockImpl;
+import ru.ildar66.bm.dao.EventDao;
+import ru.ildar66.bm.services.impl.BmEventEncoder;
 import ru.ildar66.bm.services.impl.DealEventEncoder;
 import ru.ildar66.bm.services.impl.NotificationRecipientEncoder;
 import ru.ildar66.bm.services.impl.UserEncoder;
@@ -91,8 +94,9 @@ public class AppModule {
 
 	@Contribute(ValueEncoderSource.class)
 	public static void provideEncoders(MappedConfiguration<Class<?>, ValueEncoderFactory<?>> configuration,
-			final DealDao dealDao, final DictionaryDao dictionaryDao) {
+			final EventDao eventDao, final DealDao dealDao, final DictionaryDao dictionaryDao) {
 		contributeEncoder(configuration, DealEvent.class, new DealEventEncoder(dealDao));
+		contributeEncoder(configuration, BmEvent.class, new BmEventEncoder(eventDao));
 		contributeEncoder(configuration, NotificationRecipient.class, new NotificationRecipientEncoder(dealDao));
 		contributeEncoder(configuration, User.class, new UserEncoder(dictionaryDao));
 	}

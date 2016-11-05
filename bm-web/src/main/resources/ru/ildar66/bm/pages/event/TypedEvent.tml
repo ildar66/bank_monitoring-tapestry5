@@ -1,0 +1,38 @@
+<html t:type="layout" title="Create Typed event"
+      xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+      xmlns:p="tapestry:parameter">
+      
+	<fieldset><legend>typed Event</legend>      
+    <p>${message}</p>
+
+    <form t:type="form" t:clientValidation="none">
+        <t:errors/>
+        
+        <t:select t:id="monitoredObject" validate="required" zone="groupTypeZone"
+        	t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+      	
+      	<t:zone t:id="groupTypeZone" id="groupTypeZone">
+      		<p/>
+	        <t:if test="eventGroupModel">
+	           <t:select t:id="eventGroup" model="eventGroupModel" validate="required"  zone="^"
+	           		t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+	        </t:if>
+	        <p/>
+	        <t:if test="eventTypeModel">
+	           <t:select t:id="eventType" model="eventTypeModel" validate="required"
+	           		t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+	        </t:if>
+	        <p/>
+	   	</t:zone>
+	   	
+        <div t:type="if" t:test="eventPersisted">
+            <h4>Add other fields:</h4>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <input type="submit" value="Save event"/>
+        </div>
+	</form>
+	</fieldset>
+	
+</html>
