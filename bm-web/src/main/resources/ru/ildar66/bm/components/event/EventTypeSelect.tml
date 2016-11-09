@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"	xmlns:p="tapestry:parameter">
+	<t:content>
+		<t:label for="monitoredObject"/>:
+        <t:select t:id="monitoredObject" validate="required" zone="groupTypeZone"
+        	t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+      	
+      	<t:zone t:id="groupTypeZone" id="groupTypeZone">
+      		<p/>
+	        <t:if test="eventGroupModel">
+	        	<t:label for="eventGroup"/>:
+	           	<t:select t:id="eventGroup" model="eventGroupModel" validate="required" zone="^"
+	           		t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+	        </t:if>
+	        <p/>
+	        <t:if test="eventTypeModel">
+	        	<t:label for="eventType"/>:
+	           	<t:select t:id="eventType" model="eventTypeModel" validate="required" zone="^"
+	           		t:blankOption="ALWAYS" t:blankLabel="Choose..."/>
+	        </t:if>
+	        <p/>
+	   	</t:zone>
+	</t:content>
+</html>
