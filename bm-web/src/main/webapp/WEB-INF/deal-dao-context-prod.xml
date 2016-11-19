@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+                           http://www.springframework.org/schema/util
+                           http://www.springframework.org/schema/util/spring-util-3.1.xsd
+                           http://www.springframework.org/schema/jee
+                           http://www.springframework.org/schema/jee/spring-jee-3.1.xsd">
+    <bean class="ru.ildar66.bm.dao.DealDaoImpl">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="sql">
+            <util:map>
+                <entry key="EVENT_INSTANCE_COUNT">
+                    <value>
+                        <![CDATA[
+                            select count(id) from tmp_bm_event where 1=1
+                        ]]>
+                    </value>
+                </entry>
+                <entry key="EVENT_INSTANCES_SELECT">
+                    <value>
+                        <![CDATA[
+                            select e.id e_id, e.plan_date e_plan_date, e.name e_name,
+                            	   c.id client_id, c.name client_name	
+                                   d.id d_id, d.sum d_amount, d.currency c_code, d.valid_to d_valid_to 
+                        ]]>
+                    </value>
+                </entry>
+                <entry key="EVENT_INSTANCES_FROM">
+                    <value>
+                        <![CDATA[
+                              from tmp_bm_event e
+                              		left join clients c on c.id = e.client_id
+                                    left join deal d on d.id = e.deal_id
+                                    where 1=1
+                        ]]>
+                    </value>
+                </entry>
+            </util:map>
+        </property>
+    </bean>
+</beans>
