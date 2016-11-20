@@ -27,8 +27,8 @@ of where to look for pages, components and mixins. -->
 	</context-param>
 	<context-param>
 		<param-name>spring.profiles.active</param-name>
-		<!-- <param-value>dev</param-value> -->
-		<param-value>prod</param-value>
+		<param-value>dev</param-value>
+		<!-- <param-value>prod</param-value> -->
 	</context-param>
     <!--
     Specify some additional Modules for two different execution
