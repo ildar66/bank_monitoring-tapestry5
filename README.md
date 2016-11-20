@@ -13,3 +13,5 @@ Branches:
 5)v.3.0-Spring_Tapestry_integration(Oracle DB spring DAO and configure example)
 
 6)Example passivate(activate) in CreateEvent form. No store(@persist) in session. Using ajaxformloop and ajax dialog.
+
+7)v.3.1-Spring_Tapestry_integration(Oracle DB + spring DAO + usage example)
